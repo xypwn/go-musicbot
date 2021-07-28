@@ -85,7 +85,6 @@ func (e *Extractor) GetMetadata(input string, progress chan<- struct{}) ([]Metad
 	return ret, nil
 }*/
 
-
 // `input` can be a URL or a search query.
 // Returns a slice with size 1 if the input is a single media file. Returns a
 // larger slice if the input is a playlist.

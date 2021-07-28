@@ -154,7 +154,7 @@ func commandPlay(s *discordgo.Session, g *discordgo.Guild, c *Client, args []str
 		c.Playback = &Playback{
 			CmdCh:  make(chan dca0.Command),
 			RespCh: make(chan dca0.Response),
-			Track: track,
+			Track:  track,
 		}
 		c.Unlock()
 		// We just set the playback info so we don't have to check if it's there.
