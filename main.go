@@ -130,7 +130,7 @@ func (c *Client) QueueLen() int {
 // ok field returns false if the index is out of bounds.
 func (c *Client) QueueAt(i int) (t Track, ok bool) {
 	l := c.QueueLen()
-	if i >= l {
+	if i >= l || i < 0 {
 		return Track{}, false
 	}
 	c.RLock()
@@ -180,7 +180,7 @@ func (c *Client) QueueSwap(a, b int) bool {
 		return true
 	}
 	l := c.QueueLen()
-	if a >= l || b >= l {
+	if a >= l || b >= l || a < 0 || b < 0 {
 		return false
 	}
 	c.Lock()
@@ -193,16 +193,6 @@ func (c *Client) QueueClear() {
 	c.Lock()
 	c.Queue = nil
 	c.Unlock()
-}
-
-func (c *Client) QueueFront() (t Track, ok bool) {
-	c.Lock()
-	defer c.Unlock()
-	if len(c.Queue) == 0 {
-		return Track{}, false
-	}
-	ret := *c.Queue[0]
-	return ret, true
 }
 
 ////////////////////////////////

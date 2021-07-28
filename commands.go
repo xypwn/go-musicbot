@@ -490,8 +490,12 @@ func commandSwap(c *Client, args []string) {
 		id--
 		ids[i] = int(id)
 	}
-	c.Messagef("Swapping: %d and %d.", ids[0]+1, ids[1]+1)
-	c.QueueSwap(ids[0], ids[1])
+	if c.QueueSwap(ids[0], ids[1]) {
+		c.Messagef("Swapped %d and %d.", ids[0]+1, ids[1]+1)
+	} else {
+		c.Messagef("ID out of bounds.")
+		return
+	}
 }
 
 func commandShuffle(c *Client) {
