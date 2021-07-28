@@ -20,11 +20,15 @@ Directly uses youtube-dl and ffmpeg for downloading media.
 
 - Run the binary once to generate `config.json`: `./dcbot`.
 
-- Make sure to have [ffmpeg](https://ffmpeg.org/) installed (basically every GNU/Linux/BSD distro should have a package for it).
+- Make sure to have [ffmpeg](https://ffmpeg.org/) installed (basically every Linux/BSD distro should have a package for it).
 
 - Make sure to have a **RECENT** version of [youtube-dl](https://yt-dl.org/). If your distro doesn't package a recent version, see the section titled "Obtaining a recent youtube-dl binary".
 
 - In `config.json`, find the line that says `"token"`. In that line, change the text that says `"insert your discord bot token here"` to whatever your bot token is (just look it up if you don't know how to get one). Remember to keep the `""` sorrounding the token.
+
+## Notes
+
+- youtube-dl might cause some problems with certain Unicode characters if the `LC_ALL` environment variable isn't set.
 
 ## Setup
 
