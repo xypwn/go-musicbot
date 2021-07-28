@@ -20,7 +20,7 @@ Directly uses youtube-dl and ffmpeg for downloading media.
 
 - Run the binary once to generate `config.json`: `./dcbot`.
 
-- Make sure to have [ffmpeg](https://ffmpeg.org/) installed (basically every Linux/BSD distro should have a package for it).
+- Make sure to have [ffmpeg](https://ffmpeg.org/) installed (basically every GNU/Linux/BSD distro should have a package for it).
 
 - Make sure to have a **RECENT** version of [youtube-dl](https://yt-dl.org/). If your distro doesn't package a recent version, see the section titled "Obtaining a recent youtube-dl binary".
 
@@ -33,6 +33,8 @@ Directly uses youtube-dl and ffmpeg for downloading media.
 Some distributions like Debian don't ship a very recent version of youtube-dl, but there is a simple solution for running this bot nonetheless.
 
 - Locally download the latest youtube-dl version **into the cloned repo**: `wget https://yt-dl.org/downloads/latest/youtube-dl`.
+
+- Make youtube-dl executable `chmod +x ./youtube-dl`.
 
 - In `config.json`, look for the line that says `"youtube-dl_path"`. In that line, change the value that says `"youtube-dl"` to `"./youtube-dl"`.
 
