@@ -28,7 +28,7 @@ Directly uses youtube-dl and ffmpeg for downloading media.
 
 ## Notes
 
-- youtube-dl might cause some problems with certain Unicode characters if the locale isn't configured correctly (messages like "Adding 0 tracks to queue." may arise).
+- youtube-dl might cause some problems with certain Unicode characters if the locale isn't configured correctly (messages like "Adding 0 tracks to queue." may arise). Quick fix: `sudo sh -c "echo 'LC_ALL=\"en_US.UTF-8\"' >> /etc/environment"`.
 
 ## Setup
 
