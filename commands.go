@@ -62,10 +62,10 @@ func secsToMinsSecs(secs int) string {
 // Removes/replaces some characters with special formatting meaning in discord
 // messages (for example *).
 func dcSanitize(in string) string {
-	in = strings.ReplaceAll(in, "*", "\u2217")
-	in = strings.ReplaceAll(in, "~~", "\u02dc\u02dc")
-	in = strings.ReplaceAll(in, "`", "'")
-	return strings.ReplaceAll(in, "||", "\u2758\u2758")
+	in = strings.ReplaceAll(in, "*", "\\*")
+	in = strings.ReplaceAll(in, "~~", "\\~\\~")
+	in = strings.ReplaceAll(in, "`", "\\`")
+	return strings.ReplaceAll(in, "||", "\\|\\|")
 }
 
 ////////////////////////////////
@@ -240,18 +240,12 @@ func commandAdd(c *Client, args []string, inPlace bool) {
 			MediaUrl: mediaUrl,
 		}
 		if inPlace && !isPlaylist {
+			// To replace the currently playing track (if one is currently
+			// playing), insert the new one at Queue[0] and skip the current
+			// one.
+			c.QueuePushFront(track)
 			if playback, ok := c.GetPlaybackInfo(); ok {
-				// To replace the currently playing track, insert the new one
-				// at Queue[0] and skip the current one.
-				if c.QueueLen() == 0 {
-					c.QueuePushBack(track)
-				} else {
-					c.QueuePushFront(track)
-				}
-				// Skip the current track.
 				playback.CmdCh <- dca0.CommandStop{}
-			} else {
-				c.QueuePushFront(track)
 			}
 		} else {
 			c.QueuePushBack(track)
