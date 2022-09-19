@@ -1,3 +1,7 @@
+# !!! Repo archived since I have rewritten the bot: [https://github.com/xypwn/dischord](https://github.com/xypwn/dischord) !!!
+
+---
+
 # go-musicbot
 
 A lightweight Discord music bot written in go with minimal dependencies.
